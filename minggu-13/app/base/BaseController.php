@@ -1,18 +1,16 @@
 <?php
 
 class BaseController {
-
-    private $baseUrl = "/web-crud/minggu-13/public";
     public function __construct(bool $isInAuth) {
-        // if ($isInAuth) {
-        //     // check login status
-        //     $this->checkSession();
-        // } else {
-        //     if(!isset($_SESSION["login"])){
-        //         $this->moveTo('login');
-        //         exit;
-        //     }
-        // }
+        if ($isInAuth) {
+            // check login status
+            $this->checkSession();
+        } else {
+            if(!isset($_SESSION["login"])){
+                $this->moveTo('login');
+                exit;
+            }
+        }
     }
 
     public function checkSession() {
@@ -25,17 +23,22 @@ class BaseController {
     }
 
     public function moveTo($path) {
-        header("Location: " . $this->baseUrl . "/$path");
+        header("Location: " . BASE_URL . "/$path");
     }
 
     public function query($query) {
-        global $conn;
-        $result = mysqli_query($conn, $query);
-        $rows = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $rows[] = $row;
+        try {
+            global $conn;
+            $result = mysqli_query($conn, $query);
+            $rows = [];
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rows[] = $row;
+            }
+            return $rows;
+        } catch (Exception $e) {
+            echo $e;
+            return -1;
         }
-        return $rows;
     }
 
     public function insert($query) {

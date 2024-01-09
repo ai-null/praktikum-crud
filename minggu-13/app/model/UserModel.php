@@ -18,11 +18,11 @@ class UserModel
     }
 
     function getInsertQuery() {
-        return "INSERT INTO user VALUES (DEFAULT, '$this->username','$this->password');";
+        return "INSERT INTO `user` VALUES (DEFAULT, '$this->username','$this->password');";
     }
 
     function getSelectOneQuery() {
-        return "SELECT * FROM user WHERE 'username' = '$this->username' AND password = '$this->password';";
+        return "SELECT * FROM `user` WHERE username = '$this->username' AND password = '$this->password';";
     }
 };
 ?>

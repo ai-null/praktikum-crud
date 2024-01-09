@@ -12,19 +12,14 @@ class AuthController extends BaseController {
         if(isset($_POST["submit"])) {
             $data = UserModel::init($_POST['username'], $_POST['password']);
             $result = $this->query($data->getSelectOneQuery());
-
-            echo $result;
-            echo $_POST['username'];
-            echo $_POST['password'];
-    
-        //     if(count($result) == 1) {
-        //         $_SESSION["login"] = true;
-        //         $_SESSION["error"] = false;
-        //         $this->moveTo("home");
-        //         exit;
-        //     } else {
-        //         $_SESSION["error"] = true;
-        //     }
+            if(count($result) == 1) {
+                $_SESSION["login"] = true;
+                $_SESSION["error"] = false;
+                $this->moveTo("home");
+                exit;
+            } else {
+                $_SESSION["error"] = true;
+            }
         } else {
             $_SESSION["error"] = false;
         }
