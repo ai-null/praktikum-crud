@@ -33,7 +33,6 @@ switch ($path) {
         $title = "Web Akuntansi";
         require_once "../app/view/components/navbar.php";
         require_once "../app/view/home.php";
-        require_once "../app/view/components/footer.php";
         break;
 
     case BASE_URL . "/logout":
@@ -52,6 +51,8 @@ switch ($path) {
         $controller = new MainController();
         $controller->doOnDataTabungan();
         $title = "Web Akuntansi";
+
+        echo $controller->kelas;
         require_once "../app/view/components/navbar.php";
         require_once "../app/view/data_tabungan.php";
         require_once "../app/view/components/footer.php";

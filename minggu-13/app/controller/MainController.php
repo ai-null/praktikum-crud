@@ -1,6 +1,8 @@
 <?php 
 
 class MainController extends BaseController {
+
+    public $kelas = -1;
     public function __construct() {
         parent::__construct(false);
     }
@@ -10,8 +12,8 @@ class MainController extends BaseController {
         return $this->query($query);
     }
 
-    public function getMemberFromKelas($kelas) {
-        $query = MemberModel::getSelectOneQuery($kelas);
+    public function getMemberFromKelas() {
+        $query = MemberModel::getSelectOneQuery($this->kelas);
         return $this->query($query);
     }
 
@@ -58,6 +60,13 @@ class MainController extends BaseController {
     }
 
     public function doOnDataTabungan() {
+        if (!isset($_POST['kelas'])) {
+            $this->moveTo('home');
+            return;
+        }
+
+        $this->kelas = isset($_POST['kelas']);
+
         if (isset($_POST["is_delete"])) {
             if ($this->hapus($_POST['id_member']) > 0) {
                 echo "<script>

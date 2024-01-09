@@ -39,7 +39,7 @@
         </thead>
         <tbody>
             <?php
-            $members = $controller->getMemberFromKelas(1);
+            $members = $controller->getMemberFromKelas();
             foreach ($members as $member) {
             ?>
                 <tr class="selectable-data">

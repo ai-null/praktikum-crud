@@ -17,8 +17,6 @@ class BaseController {
         if(isset($_SESSION["login"])){
             $this->moveTo('home');
             exit;
-        } else {
-            
         }
     }
 
