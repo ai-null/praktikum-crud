@@ -1,110 +1,48 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Generation Time: Dec 25, 2023 at 07:00 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- web_crud.`member` definition
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE TABLE `member` (
+  `id_member` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `kota` varchar(30) NOT NULL,
+  `provinsi` varchar(30) NOT NULL,
+  `kode_pos` varchar(30) NOT NULL,
+  `kelas` int(1) NOT NULL,
+  PRIMARY KEY (`id_member`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- web_crud.`transaction` definition
 
---
--- Database: `akuntansi`
---
+CREATE TABLE `transaction` (
+  `id_transaction` int(2) NOT NULL AUTO_INCREMENT,
+  `id_user` int(2) DEFAULT NULL,
+  `id_member` int(2) DEFAULT NULL,
+  `nominal` varchar(256) NOT NULL,
+  `type` int(1) NOT NULL,
+  PRIMARY KEY (`id_transaction`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `siswa`
---
+-- web_crud.`user` definition
 
-CREATE DATABASE akuntansi;
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `siswa` (
-  `id_siswa` int NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `kelas` int NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `password` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+INSERT INTO web_crud.`user`
+(id_user, username, password)
+VALUES(25, 'ainul', '12345');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tabelguru`
---
-
-CREATE TABLE `tabelguru` (
-  `idguru` int NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `password` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi`
---
-
-CREATE TABLE `transaksi` (
-  `idtabungan` int NOT NULL,
-  `idguru` int NOT NULL,
-  `idsiswa` int NOT NULL,
-  `nominal` varchar(150) NOT NULL,
-  `foto` varchar(150) NOT NULL,
-  `nohp` varchar(12) NOT NULL,
-  `tipe` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `siswa`
---
-ALTER TABLE `siswa`
-  ADD PRIMARY KEY (`id_siswa`);
-
---
--- Indexes for table `tabelguru`
---
-ALTER TABLE `tabelguru`
-  ADD PRIMARY KEY (`idguru`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`idtabungan`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `siswa`
---
-ALTER TABLE `siswa`
-  MODIFY `id_siswa` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `idtabungan` int NOT NULL AUTO_INCREMENT;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO web_crud.`member`
+(id_member, first_name, last_name, kota, provinsi, kode_pos, kelas)
+VALUES(7, 'fira', 'kamila', 'surabaya', 'jatim', '66112', 1);
+INSERT INTO web_crud.`member`
+(id_member, first_name, last_name, kota, provinsi, kode_pos, kelas)
+VALUES(12, 'Ainul', 'Yaqin', 'Kota Surabaya', 'jatim 2', '60128', 2);
+INSERT INTO web_crud.`member`
+(id_member, first_name, last_name, kota, provinsi, kode_pos, kelas)
+VALUES(13, 'David', 'Immanuel', 'Kota Surabaya', 'jawa timur', '60128', 1);
