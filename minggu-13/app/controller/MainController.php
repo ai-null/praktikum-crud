@@ -40,7 +40,7 @@ class MainController extends BaseController {
                 } else {
                     echo "<script>
                         alert('data gagal diubah!');
-                        document.location.href = '".BASE_URL."/home';
+                        // document.location.href = '".BASE_URL."/home';
                       </script>";
                 }
             } else {
@@ -71,12 +71,12 @@ class MainController extends BaseController {
             if ($this->hapus($_POST['id_member']) > 0) {
                 echo "<script>
                     alert('data berhasil dihapus!');
-                    document.location.href = '".BASE_URL."/home';
+                    document.location.href = '".BASE_URL."/tambah_siswa';
                   </script>";
             } else {
                 echo "<script>
                 alert('data gagal dihapu!');
-                document.location.href = '".BASE_URL."/home';
+                document.location.href = '".BASE_URL."/tambah_siswa';
               </script>";
             }
         } else if (isset($_POST["submit"])) {
@@ -84,24 +84,24 @@ class MainController extends BaseController {
                 if ($this->ubah() > 0) {
                     echo "<script>
                         alert('data berhasil diubah!');
-                        document.location.href = '".BASE_URL."/home';
+                        document.location.href = '".BASE_URL."/tambah_siswa';
                       </script>";
                 } else {
                     echo "<script>
                         alert('data gagal diubah!');
-                        document.location.href = '".BASE_URL."/home';
+                        document.location.href = '".BASE_URL."/tambah_siswa';
                       </script>";
                 }
             } else {
                 if ($this->tambah() > 0) {
                     echo "<script>
                         alert('data berhasil ditambahkan!');
-                        document.location.href = '".BASE_URL."/home';
+                        document.location.href = '".BASE_URL."/tambah_siswa';
                       </script>";
                 } else {
                     echo "<script>
                         alert('data gagal ditambahkan!');
-                        document.location.href = '".BASE_URL."/home';
+                        document.location.href = '".BASE_URL."/tambah_siswa';
                       </script>";
                 }
             }
@@ -120,7 +120,7 @@ class MainController extends BaseController {
         $kodePos = $_POST["kode_pos"];
         $kelas = $_POST["kelas"];
 
-        $query = "UPDATE member SET first_name = '$firstName', last_name = '$lastName', kota = '$kota', provinsi = '$provinsi', ,kode_pos = '$kodePos', kelas = '$kelas' WHERE id_member = $idMember;";
+        $query = "UPDATE member SET first_name = '$firstName', last_name = '$lastName', kota = '$kota', provinsi = '$provinsi', kode_pos = '$kodePos', kelas = '$kelas' WHERE id_member = '$idMember';";
         mysqli_query($conn, $query);
 
         return mysqli_affected_rows($conn);

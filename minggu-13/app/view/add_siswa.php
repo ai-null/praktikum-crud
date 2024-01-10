@@ -117,13 +117,13 @@
 
         var els = document.getElementsByClassName("selectable-data")
         const listOfFields = [
-            document.getElementById("validationDefault00"),
-            document.getElementById("validationDefault01"),
-            document.getElementById("validationDefault02"),
-            document.getElementById("validationDefault03"),
-            document.getElementById("validationDefault04"),
-            document.getElementById("validationDefault05"),
-            document.getElementById("validationDefault06"),
+            document.getElementById("validationDefault00"), // id 
+            document.getElementById("validationDefault01"), // first name
+            document.getElementById("validationDefault02"), // last name 
+            document.getElementById("validationDefault03"), // kota
+            document.getElementById("validationDefault04"), // provinsi
+            document.getElementById("validationDefault05"), // kode pos
+            document.getElementById("validationDefault06"), // kelas
         ]
 
         Array.prototype.forEach.call(els, function(el) {
