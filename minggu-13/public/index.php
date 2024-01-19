@@ -14,6 +14,8 @@ require_once "../app/config.php";
 
 session_start();
 
+// echo $path;
+
 // Router
 switch ($path) {
     case BASE_URL . "/login":
@@ -51,8 +53,6 @@ switch ($path) {
         $controller = new MainController();
         $controller->doOnDataTabungan();
         $title = "Web Akuntansi";
-
-        echo $controller->kelas;
         require_once "../app/view/components/navbar.php";
         require_once "../app/view/data_tabungan.php";
         require_once "../app/view/components/footer.php";

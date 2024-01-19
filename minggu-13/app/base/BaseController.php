@@ -34,7 +34,6 @@ class BaseController {
             }
             return $rows;
         } catch (Exception $e) {
-            echo $e;
             return -1;
         }
     }
@@ -56,5 +55,3 @@ class BaseController {
             </script>";
     }
 }
-
-?>

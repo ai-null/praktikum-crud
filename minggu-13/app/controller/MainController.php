@@ -60,12 +60,12 @@ class MainController extends BaseController {
     }
 
     public function doOnDataTabungan() {
-        if (!isset($_POST['kelas'])) {
+        if (!isset($_GET['kelas'])) {
             $this->moveTo('home');
             return;
         }
 
-        $this->kelas = isset($_POST['kelas']);
+        $this->kelas = isset($_GET['kelas']);
 
         if (isset($_POST["is_delete"])) {
             if ($this->hapus($_POST['id_member']) > 0) {
