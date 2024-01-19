@@ -64,8 +64,7 @@ class MainController extends BaseController {
             $this->moveTo('home');
             return;
         }
-
-        $this->kelas = isset($_GET['kelas']);
+        $this->kelas = $_GET['kelas'];
 
         if (isset($_POST["is_delete"])) {
             if ($this->hapus($_POST['id_member']) > 0) {
@@ -151,5 +150,3 @@ class MainController extends BaseController {
         return mysqli_affected_rows($conn);
     }
 }
-
-?>

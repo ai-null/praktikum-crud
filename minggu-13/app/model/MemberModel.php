@@ -33,7 +33,9 @@ class MemberModel
 
     static function getSelectOneQuery($kelas)
     {
-        return "SELECT * FROM member WHERE kelas = $kelas";
+        $sql = "SELECT id_transaction, first_name, kelas, nominal from member right join transactions"
+            . "on member.id_member = transactions.id_user where kelas $kelas";
+        return $sql;
     }
 
     static function getSelectAllQuery()
